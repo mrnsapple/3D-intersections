@@ -32,6 +32,7 @@ typedef struct check_struct
 }check_struct;
 
 int my_get_nbr(char *str);
+int get_t_num(int alpha, int *v, int *p, int r);
 
 int key_lengh(char *av);
 int **get_key(char *av, int rows,int lines, int key_lenght);

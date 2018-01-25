@@ -9,6 +9,12 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/*int get_t_num(int alpha, int *v, int *p, int r)
+{
+	int	t;
+
+	t = - (2*v[0]*p[0] + 2*v[1]*p[1] + 2*v[2]*p[2]);
+	}*/
 int my_get_nbr(char *str)
 {
         int i;

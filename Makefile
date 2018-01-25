@@ -14,7 +14,7 @@ SRC	=	main.c		\
 
 OBJ	= 	$(SRC:.c=.o)
 
-NAME	=	 103cipher
+NAME	=	 104intersection
 
 RM	=	rm -f
 
