@@ -20,13 +20,13 @@ void error(int ac)
 void sphere (char **av)
 {
 	printf("sphere of radius ");
-	printf("%c\n", av[1][0]);
+	printf("%c\n", av[8][0]);
 }
 
 void cilinder(char **av)
 {
 	printf("cylinder of radius ");
-	printf("%c\n", av[1][0]);
+	printf("%c\n", av[8][0]);
 }
 
 void line (int *v, int *p)
@@ -45,7 +45,6 @@ void intersection(int *v, int *p, int r)
 	float	g;
 	float	m;
 	float	alpha = b * b -4 * a *c;
-
 	if (alpha < 0)
 		printf("No intersection point.\n");
 	if (alpha == 0)
@@ -53,7 +52,7 @@ void intersection(int *v, int *p, int r)
 		g = -(b/(2 * a));
 		//printf("%f\n", g);
 		printf("1 intersection point :\n");
-		printf("(%.3f, %.3f, %.3f)", p[0]+ g * v[0],	\
+		printf("(%.3f, %.3f, %.3f)\n", p[0]+ g * v[0],	\
 		       p[1]+ g * v[1], p[2]+ g * v[2]);
 	}
 	if (alpha > 0)
@@ -61,12 +60,11 @@ void intersection(int *v, int *p, int r)
 		printf("2 intersection point:\n");
 		g = (-b - sqrt(alpha)) / (2 * a);
 		m = (-b + sqrt(alpha)) / (2 * a);
-		printf("(%.3f, %.3f, %.3f)", p[0]+ g * v[0], 	\
+		printf("(%.3f, %.3f, %.3f)\n", p[0]+ g * v[0], 	\
 		       p[1]+ g * v[1], p[2]+ g * v[2]);
-		printf("(%.3f, %.3f, %.3f)", p[0]+ m * v[0],	\
+		printf("(%.3f, %.3f, %.3f)\n", p[0]+ m * v[0],	\
 		       p[1]+ m * v[1], p[2]+ m * v[2]);
 	}
-	//printf("aplha:%f\n", alpha);
 }
 void cylinder(int *v, int *p, int r)
 {
@@ -76,7 +74,7 @@ void cylinder(int *v, int *p, int r)
 	float	g;
 	float	m;
 	float	alpha = b * b -4 * a *c;
-
+	//printf("cilinder\n");
 	if (alpha < 0)
 		printf("No intersection point.\n");
 	if (alpha == 0)
@@ -84,7 +82,7 @@ void cylinder(int *v, int *p, int r)
 		g = -(b/(2 * a));
 		//printf("%f\n", g);
 		printf("1 intersection point :\n");
-		printf("(%.3f, %.3f, %.3f)", p[0]+ g * v[0],	\
+		printf("(%.3f, %.3f, %.3f)\n", p[0]+ g * v[0],	\
 		       p[1]+ g * v[1], p[2]+ g * v[2]);
 	}
 	if (alpha > 0)
@@ -97,7 +95,6 @@ void cylinder(int *v, int *p, int r)
 		printf("(%.3f, %.3f, %.3f)\n", p[0]+ m * v[0],	\
 		       p[1]+ m * v[1], p[2]+ m * v[2]);
 	}
-	//printf("aplha:%f\n", alpha);
 }
 void create_alpha (char **av)
 {
@@ -112,7 +109,7 @@ void create_alpha (char **av)
 	//printf("p:%d,%d,%d\n", p[0],p[1],p[2]);
 	if (av[1][0] == '1')
 		intersection(v,p,r);
-	else if (av[1][0] == '2')
+	if (av[1][0] == '2')
 		cylinder(v,p,r);
 	//get_t_num((float)alpha,v,p,r);
 }
