@@ -77,10 +77,10 @@ void cylinder(int *v, int *p, int r)
 	float	m;
 	float	alpha = b * b -4 * a *c;
 
-	if (a == 0)
-		printf("There is an infinite number of intersection points.\n");
-	else if (alpha < 0)
+	if (alpha < 0)
 		printf("No intersection point.\n");
+	else if (a == 0)
+		printf("There is an infinite number of intersection points.\n");
 	if (alpha == 0)
 	{
 		g = -(b/(2 * a));
