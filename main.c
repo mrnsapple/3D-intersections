@@ -11,10 +11,11 @@
 #include "list.h"
 #include <math.h>
 
-void error(int ac)
+int error(int ac)
 {
 	if (ac != 9)
-		exit(84);
+		return (0);
+	return (1);
 }
 
 void sphere (char **av)
@@ -33,7 +34,7 @@ void line (int *v, int *p)
 {
 	printf("straight line going through the (%d,%d,%d) ",\
 	       p[0],p[1],p[2]);
-	printf("points and of direction vector (%d,%d,%d)\n",\
+	printf("point and of direction vector (%d,%d,%d)\n",\
 	       v[0],v[1],v[2]);	
 }
 
@@ -57,13 +58,13 @@ void intersection(int *v, int *p, int r)
 	}
 	if (alpha > 0)
 	{
-		printf("2 intersection point:\n");
+		printf("2 intersection points:\n");
 		g = (-b - sqrt(alpha)) / (2 * a);
 		m = (-b + sqrt(alpha)) / (2 * a);
-		printf("(%.3f, %.3f, %.3f)\n", p[0]+ g * v[0], 	\
-		       p[1]+ g * v[1], p[2]+ g * v[2]);
 		printf("(%.3f, %.3f, %.3f)\n", p[0]+ m * v[0],	\
 		       p[1]+ m * v[1], p[2]+ m * v[2]);
+		printf("(%.3f, %.3f, %.3f)\n", p[0]+ g * v[0], 	\
+		       p[1]+ g * v[1], p[2]+ g * v[2]);
 	}
 }
 void cylinder(int *v, int *p, int r)
@@ -74,28 +75,33 @@ void cylinder(int *v, int *p, int r)
 	float	g;
 	float	m;
 	float	alpha = b * b -4 * a *c;
-	//printf("cilinder\n");
+	
 	if (alpha < 0)
 		printf("No intersection point.\n");
 	if (alpha == 0)
 	{
 		g = -(b/(2 * a));
-		//printf("%f\n", g);
-		printf("1 intersection point :\n");
-		printf("(%.3f, %.3f, %.3f)\n", p[0]+ g * v[0],	\
-		       p[1]+ g * v[1], p[2]+ g * v[2]);
+		if (g >= 0 || g < 0)
+		{
+			printf("1 intersection point :\n");
+			printf("(%.3f, %.3f, %.3f)\n", p[0]+ g * v[0],	\
+			       p[1]+ g * v[1], p[2]+ g * v[2]);
+		}
+		else
+			printf("There is an infinite number of intersection points.\n");
 	}
 	if (alpha > 0)
 	{
-		printf("2 intersection point:\n");
+		printf("2 intersection points:\n");
 		g = (-b - sqrt(alpha)) / (2 * a);
 		m = (-b + sqrt(alpha)) / (2 * a);
-		printf("(%.3f, %.3f, %.3f)\n", p[0]+ g * v[0],	\
-		       p[1]+ g * v[1], p[2]+ g * v[2]);
 		printf("(%.3f, %.3f, %.3f)\n", p[0]+ m * v[0],	\
 		       p[1]+ m * v[1], p[2]+ m * v[2]);
+		printf("(%.3f, %.3f, %.3f)\n", p[0]+ g * v[0],	\
+		       p[1]+ g * v[1], p[2]+ g * v[2]);
 	}
 }
+
 void create_alpha (char **av)
 {
 	int	v[3] = {my_get_nbr(av[5]),my_get_nbr(av[6]),	\
@@ -116,13 +122,13 @@ void create_alpha (char **av)
 
 int main(int ac, char **av)
 {
-	
-	error(ac);
+	if(error(ac) == 0)
+		return (84);
 	if (av[1][0] == '1')
 		sphere(av);
 	if (av[1][0] == '2')
 		cilinder(av);
 	if (av[1][0] == '1' || av[1][0] == '2')
 		create_alpha(av);
-	
+	return (0);
 }
