@@ -21,13 +21,13 @@ int error(int ac)
 void sphere (char **av)
 {
 	printf("sphere of radius ");
-	printf("%c\n", av[8][0]);
+	printf("%d\n", atoi(av[8]));
 }
 
 void cilinder(char **av)
 {
 	printf("cylinder of radius ");
-	printf("%c\n", av[8][0]);
+	printf("%d\n", atoi(av[8]));
 }
 
 void line (int *v, int *p)
@@ -104,11 +104,11 @@ void cylinder(int *v, int *p, int r)
 
 void create_alpha (char **av)
 {
-	int	v[3] = {my_get_nbr(av[5]),my_get_nbr(av[6]),	\
-			my_get_nbr(av[7])};
-	int	p[3] = {my_get_nbr(av[2]),my_get_nbr(av[3]),\
-			my_get_nbr(av[4])};
-	int	r = my_get_nbr(av[8]);
+	int	v[3] = {atoi(av[5]),atoi(av[6]),	\
+			atoi(av[7])};
+	int	p[3] = {atoi(av[2]), atoi(av[3]),\
+			atoi(av[4])};
+	int	r = atoi(av[8]);
 	
 	line(v,p);	
 	if (av[1][0] == '1')
@@ -121,6 +121,9 @@ int main(int ac, char **av)
 {
 	if(error(ac) == 0)
 		return (84);
+	number(ac, av);
+	if (av[1][0] == '3')
+		return (0);
 	if (av[1][0] == '1')
 		sphere(av);
 	if (av[1][0] == '2')
