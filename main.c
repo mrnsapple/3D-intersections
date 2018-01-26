@@ -57,7 +57,7 @@ void intersection(int *v, int *p, int r)
 	}
 	if (alpha > 0)
 	{
-		printf("2 intersection points:\n");
+		printf("2 intersection points :\n");
 		g = (-b - sqrt(alpha)) / (2 * a);
 		m = (-b + sqrt(alpha)) / (2 * a);
 		printf("(%.3f, %.3f, %.3f)\n", p[0]+ m * v[0],	\
@@ -92,7 +92,7 @@ void cylinder(int *v, int *p, int r)
 	}
 	if (alpha > 0)
 	{
-		printf("2 intersection points:\n");
+		printf("2 intersection points :\n");
 		g = (-b - sqrt(alpha)) / (2 * a);
 		m = (-b + sqrt(alpha)) / (2 * a);
 		printf("(%.3f, %.3f, %.3f)\n", p[0]+ m * v[0],	\
@@ -122,13 +122,18 @@ int main(int ac, char **av)
 	if(error(ac) == 0)
 		return (84);
 	number(ac, av);
-	if (av[1][0] == '3')
-		return (0);
+	
 	if (av[1][0] == '1')
 		sphere(av);
 	if (av[1][0] == '2')
 		cilinder(av);
 	if (av[1][0] == '1' || av[1][0] == '2')
 		create_alpha(av);
+	if (av[1][0] == '3')
+	{
+		if (atoi(av[8]) < 0 || atoi(av[8]) > 360)
+			exit (84);
+		return (0);
+	}
 	return (0);
 }
