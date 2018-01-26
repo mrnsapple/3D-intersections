@@ -76,8 +76,10 @@ void cylinder(int *v, int *p, int r)
 	float	g;
 	float	m;
 	float	alpha = b * b -4 * a *c;
-	
-	if (alpha < 0 || a == 0)
+
+	if (a == 0)
+		printf("There is an infinite number of intersection points.\n");
+	if (alpha < 0)
 		printf("No intersection point.\n");
 	if (alpha == 0)
 	{
@@ -89,7 +91,7 @@ void cylinder(int *v, int *p, int r)
 			       p[1]+ g * v[1], p[2]+ g * v[2]);
 		}
 		else
-			printf("There is an infinite number of intersection points.\n");
+			printf("No intersection point.\n");
 	}
 	if (alpha > 0)
 	{
@@ -118,6 +120,16 @@ void create_alpha (char **av)
 		cylinder(v,p,r);
 }
 
+void cone(char **av)
+{
+	int	v[3] = {atoi(av[5]),atoi(av[6]),	\
+			atoi(av[7])};
+	int	p[3] = {atoi(av[2]), atoi(av[3]),\
+			atoi(av[4])};
+	printf("cone of %d degree angle\n",atoi(av[8]));
+	line(v,p);
+}
+
 int main(int ac, char **av)
 {
 	if(error(ac) == 0)
@@ -135,6 +147,7 @@ int main(int ac, char **av)
 	{
 		if (atoi(av[8]) < 0 || atoi(av[8]) > 360)
 			return (84);
+		cone(av);
 	}
 	return (0);
 }
