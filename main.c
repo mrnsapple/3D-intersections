@@ -79,7 +79,7 @@ void cylinder(int *v, int *p, int r)
 
 	if (a == 0)
 		printf("There is an infinite number of intersection points.\n");
-	if (alpha < 0)
+	else if (alpha < 0)
 		printf("No intersection point.\n");
 	if (alpha == 0)
 	{
