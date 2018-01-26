@@ -51,7 +51,6 @@ void intersection(int *v, int *p, int r)
 	if (alpha == 0)
 	{
 		g = -(b/(2 * a));
-		//printf("%f\n", g);
 		printf("1 intersection point :\n");
 		printf("(%.3f, %.3f, %.3f)\n", p[0]+ g * v[0],	\
 		       p[1]+ g * v[1], p[2]+ g * v[2]);
@@ -67,6 +66,7 @@ void intersection(int *v, int *p, int r)
 		       p[1]+ g * v[1], p[2]+ g * v[2]);
 	}
 }
+
 void cylinder(int *v, int *p, int r)
 {
 	float	a = (v[0]*v[0] + v[1]*v[1]);
@@ -111,13 +111,10 @@ void create_alpha (char **av)
 	int	r = my_get_nbr(av[8]);
 	
 	line(v,p);	
-	//printf("v:%d,%d,%d\n", v[0],v[1]*v[1],v[2]);
-	//printf("p:%d,%d,%d\n", p[0],p[1],p[2]);
 	if (av[1][0] == '1')
 		intersection(v,p,r);
 	if (av[1][0] == '2')
 		cylinder(v,p,r);
-	//get_t_num((float)alpha,v,p,r);
 }
 
 int main(int ac, char **av)
