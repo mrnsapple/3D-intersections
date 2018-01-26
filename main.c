@@ -122,7 +122,8 @@ int main(int ac, char **av)
 	if(error(ac) == 0)
 		return (84);
 	number(ac, av);
-	
+	if (atoi(av[1]) != 1 && atoi(av[1]) != 2 && atoi(av[1]) != 3)
+		return (84);
 	if (av[1][0] == '1')
 		sphere(av);
 	if (av[1][0] == '2')
@@ -133,7 +134,6 @@ int main(int ac, char **av)
 	{
 		if (atoi(av[8]) < 0 || atoi(av[8]) > 360)
 			return (84);
-		return (0);
 	}
 	return (0);
 }
