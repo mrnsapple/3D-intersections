@@ -46,7 +46,8 @@ void intersection(int *v, int *p, int r)
 	float	g;
 	float	m;
 	float	alpha = b * b -4 * a *c;
-	if (alpha < 0)
+
+	if (alpha < 0 || a == 0)
 		printf("No intersection point.\n");
 	if (alpha == 0)
 	{
@@ -76,7 +77,7 @@ void cylinder(int *v, int *p, int r)
 	float	m;
 	float	alpha = b * b -4 * a *c;
 	
-	if (alpha < 0)
+	if (alpha < 0 || a == 0)
 		printf("No intersection point.\n");
 	if (alpha == 0)
 	{
