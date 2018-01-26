@@ -21,7 +21,7 @@ RM	=	rm -f
 all:	$(NAME)
 
 $(NAME):
-	gcc -g -Wall -Werror -o $(NAME) $(SRC)
+	gcc -g -Wall -Werror -o $(NAME) $(SRC) -lm
 clean:
 	$(RM) $(OBJ) *# *~
 
