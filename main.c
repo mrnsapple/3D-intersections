@@ -132,7 +132,7 @@ int main(int ac, char **av)
 	if (av[1][0] == '3')
 	{
 		if (atoi(av[8]) < 0 || atoi(av[8]) > 360)
-			exit (84);
+			return (84);
 		return (0);
 	}
 	return (0);
