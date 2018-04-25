@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2017
 ** my_put_everything
 ** File description:
-** By Luis Angel Macias de la Cruz
+** Bymrnsapple
 */
 
 #include <stdlib.h>
